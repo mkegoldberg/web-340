@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Assignment 2.4</title>
+        <style>
+            body { font-family: Arial, Helvetica, sans-serif; color: #333;}
+            h1 { font-size: 2rem; margin-bottom: .5rem;}
+            .header div { font-size: 1.25rem;}
+            ul { list-style-type: none;}
+            li { margin-bottom: .25rem; font-style: italic;}
+        </style>
+    </head>
+
+    <body>
+        <main>
+            <div class="header">
+                <h1>EJS Views Example</h1>
+                <div>
+                    Here's a little info about me:
+                </div>
+            </div>
+            <div>
+                <ul>
+                    <li>My first name is <strong><%= firstName %></strong></li>
+                    <li>My last name is <strong><%= lastName %></strong></li>
+                    <li>My address name is <strong><%= address %></strong></li>
+                </ul>
+            </div>
+        </main>
+    </body>
+</html>
