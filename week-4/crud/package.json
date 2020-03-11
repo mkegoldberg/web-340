@@ -1,0 +1,8 @@
+{
+    "name": "crud",
+    "author": "Mike Goldberg",
+    "private": true,
+    "dependencies": {
+        "express": "^4.17.1"
+    }
+}
