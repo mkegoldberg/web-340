@@ -1,5 +1,5 @@
 {
-    "name": "json",
+    "name": "status",
     "author": "Mike Goldberg",
     "private": true,
     "dependencies": {
