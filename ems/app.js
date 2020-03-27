@@ -18,7 +18,7 @@ app.set("view engine", "ejs");
 app.use(logger("short"));
 app.get("/", function (request, response) {
   response.render("index", {
-    title: "Home page"
+    title: "EMS Landing Page"
   });
 });
 
