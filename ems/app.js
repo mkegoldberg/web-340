@@ -11,9 +11,12 @@ var express = require("express");
 var http = require("http");
 var path = require("path");
 var logger = require("morgan");
-var app = express();
+var helmet = require("helmet");
 const mongoose = require('mongoose');
 const Employee = require('./models/employee');
+
+// initialize express
+var app = express();
 
 // MongoDB connection
 var mongoDB = "mongodb+srv://user-01:dbUser01@buwebdev-cluster-1-f4r04.mongodb.net/test";
@@ -30,7 +33,11 @@ db.once("open", function () {
 
 app.set("views", path.resolve(__dirname, "views"));
 app.set("view engine", "ejs");
+
+
 app.use(logger("short"));
+app.use(helmet.xssFilter());
+
 app.get("/", function (request, response) {
   // response.render("index", {
   //   title: "EMS Landing Page"
@@ -46,6 +53,13 @@ app.get("/", function (request, response) {
         employees: employees
       })
     }
+  });
+});
+
+// http calls
+app.get("/", function (request, response) {
+  response.render("index", {
+    message: "XSS Prevention Example"
   });
 });
 
