@@ -8,23 +8,22 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">001</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>Admin</td>
-    </tr>
-    <tr>
-      <th scope="row">002</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>Marketing</td>
-    </tr>
-    <tr>
-      <th scope="row">003</th>
-      <td>Larry</td>
-      <td>Bird</td>
-      <td>Product</td>
-    </tr>
+    <% if (employees.length) { %>
+      <% employees.forEach(function (emp) { %>
+        <tr>
+          <th scope="row"><%= emp.empID %></th>
+          <td><%= emp.firstName %></td>
+          <td><%= emp.lastName %></td>
+          <td><%= emp.department %></td>
+        </tr>
+      <% }) %>
+    <% } else { %>
+      <tr>
+        <td>
+          Sorry you don't have any employees yet!<br />
+          Click <a href="/new" class="">HERE</a> to add one
+        </td>
+      </tr>
+    <% } %>
   </tbody>
 </table>

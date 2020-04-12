@@ -3,7 +3,7 @@
 ; Title:  EMS Project
 ; Author: Mike Goldberg
 ; Date:   18 March 2020
-; Description: Pug Templates
+; Description: Employee Management System
 ;===========================================
 */
 
@@ -17,7 +17,7 @@ var bodyParser = require("body-parser");
 var cookieParser = require("cookie-parser");
 var csrf = require("csurf");
 const mongoose = require('mongoose');
-// const Employee = require('./models/employee');
+const Employee = require('./models/employee');
 
 
 // MongoDB connection
@@ -73,9 +73,6 @@ app.set("view engine", "ejs");
  * URL: localhost:8080
  */
 app.get("/", function (request, response) {
-  // response.render("index", {
-  //   title: "EMS Landing Page"
-  // });
   Employee.find({}, function (err, employees) {
     if (err) {
       console.log(err);
@@ -112,18 +109,28 @@ app.get('/new', function (req, res) {
  */
 app.post("/process", function (request, response) {
   // console.log(request.body.txtName);
-  if (!req.body.txtName) {
-    res.status(400).send('Entries must have a name');
+  if (!request.body.firstName) {
+    response.status(400).send('Entries must have a name');
     return;
   }
+  // if (!request.body.empNumber) {
+  //   response.status(400).send('Entries must have an employee number');
+  //   return;
+  // }
 
   // get the request's form data
-  const employeeName = req.body.txtName;
-  console.log(employeeName);
+  const employeeFirstName = request.body.firstName;
+  const employeeLastName = request.body.lastName;
+  const empID = request.body.empID;
+  const department = request.body.department;
+  console.log(employeeFirstName + " " + employeeLastName);
 
   // create a employee model
   let employee = new Employee({
-    name: employeeName
+    firstName: employeeFirstName,
+    lastName: employeeLastName,
+    empID: empID,
+    department: department,
   });
 
   // save
@@ -133,7 +140,7 @@ app.post("/process", function (request, response) {
       throw err;
     } else {
       console.log(employeeName + ' saved successfully!');
-      res.redirect('/');
+      response.redirect('/');
     }
   });
 });

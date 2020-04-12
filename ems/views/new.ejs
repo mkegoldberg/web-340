@@ -8,11 +8,26 @@
   <div role="main" class="container" style="width: 50%;">
     <br /><br />
 
-    <h2>-- Fruit Entry Page --</h2>
+    <h2>Create a new employee</h2>
     <form method="post" action="/process">
       <div class="form-group">
-        <label for="txtName">Name:</label>
-        <input type="text" class="form-control" id="txtName" name="txtName" />
+        <label for="firstName">First Name:</label>
+        <input type="text" class="form-control" id="firstName" name="firstName" />
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">Last Name:</label>
+        <input type="text" class="form-control" id="lastName" name="lastName" />
+      </div>
+
+      <div class="form-group">
+        <label for="empID">Employee Number:</label>
+        <input type="text" class="form-control" id="empID" name="empID" />
+      </div>
+
+      <div class="form-group">
+        <label for="department">Department:</label>
+        <input type="text" class="form-control" id="department" name="department" />
       </div>
 
       <div class="form-group">
@@ -27,7 +42,7 @@
 
     <br /><br />
 
-    <a href="/list">Return to Fruits</a>
+    <a href="/">Return to Home Page</a>
   </div>
 
   <%- include("scripts"); %>
