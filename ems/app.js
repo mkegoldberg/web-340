@@ -103,20 +103,24 @@ app.get('/new', function (req, res) {
 /**
  * Description: Processes a form submission.
  * Type: HttpPost
- * Request: textName
+ * Request: firstNAme, lastName, empID, department
  * Response: index.ejs
  * URL: localhost:8080/process
  */
 app.post("/process", function (request, response) {
-  // console.log(request.body.txtName);
+  debugger;
   if (!request.body.firstName) {
     response.status(400).send('Entries must have a name');
     return;
   }
-  // if (!request.body.empNumber) {
-  //   response.status(400).send('Entries must have an employee number');
-  //   return;
-  // }
+  if (!request.body.empID) {
+    response.status(400).send('Entries must have an employee number');
+    return;
+  }
+  if (!request.body.department || !request.body.department === "Please Select") {
+    response.status(400).send('Please select a department');
+    return;
+  }
 
   // get the request's form data
   const employeeFirstName = request.body.firstName;
@@ -135,11 +139,12 @@ app.post("/process", function (request, response) {
 
   // save
   employee.save(function (err) {
+    debugger;
     if (err) {
       console.log(err);
       throw err;
     } else {
-      console.log(employeeName + ' saved successfully!');
+      console.log(employeeFirstName + ' saved successfully!');
       response.redirect('/');
     }
   });

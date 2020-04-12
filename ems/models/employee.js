@@ -15,7 +15,7 @@ const Schema = mongoose.Schema;
 let EmployeeSchema = new Schema({
   firstName: { type: String, required: true },
   lastName: { type: String, required: false },
-  empNumber: { type: String, required: true },
+  empID: { type: String, required: true },
   department: { type: String, required: false },
 });
 
