@@ -5,6 +5,7 @@
       <th scope="col">First</th>
       <th scope="col">Last</th>
       <th scope="col">Department</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -15,6 +16,7 @@
           <td><%= emp.firstName %></td>
           <td><%= emp.lastName %></td>
           <td><%= emp.department %></td>
+          <td><a href="/view/<%= emp.empID %>">View</a></td>
         </tr>
       <% }) %>
     <% } else { %>
