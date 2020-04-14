@@ -150,6 +150,34 @@ app.post("/process", function (request, response) {
   });
 });
 
+/**
+ * Description: Queries a single employee'
+ * Type: HttpGet
+ * Request: queryName
+ * Response: view.ejs, Employee[] | index.ejs
+ * URL: localhost:8080/view/:queryName
+ */
+app.get('/view/:queryName', function (request, response) {
+  const queryName = request.params['queryName'];
+
+  Employee.find({ 'empID': queryName }, function (err, employees) {
+    if (err) {
+      console.log(err);
+      throw err;
+    } else {
+      console.log(employees);
+
+      if (employees.length > 0) {
+        response.render('view', {
+          title: 'EMS | View',
+          employees: employees
+        })
+      } else {
+        response.redirect('/');
+      }
+    }
+  })
+});
 
 // http calls
 // app.get("/", function (request, response) {
