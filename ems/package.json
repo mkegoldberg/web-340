@@ -11,5 +11,11 @@
         "helmet": "^3.22.0",
         "mongoose": "^5.9.7",
         "morgan": "^1.9.1"
+    },
+    "scripts": {
+        "start": "node app.js"
+    },
+    "engines": {
+        "node": "v10.15.1"
     }
 }
